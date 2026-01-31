@@ -1,0 +1,37 @@
+backend:
+  name: github
+  branch: main
+  repo: Mitu624/shopHub  
+
+# Media storage
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Collections
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "products"
+    create: true
+    slug: "{{fields.category}}/{{slug}}"
+    fields:
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Electronics", value: "electronics" }
+          - { label: "Fashion", value: "fashion" }
+          - { label: "Sports", value: "sports" }
+          - { label: "Beauty", value: "beauty" }
+          - { label: "Toys", value: "toys" }
+          - { label: "Home & Living", value: "home-living" }
+          - { label: "Pet Supplies", value: "pet-supplies" }
+          - { label: "Automotive", value: "automotive" }
+          - { label: "Deals", value: "deals" }
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Price", name: "price", widget: "string" }
+      - { label: "Image (URL)", name: "image", widget: "string" }
+      - { label: "Rating", name: "rating", widget: "string" }
+      - { label: "Source", name: "source", widget: "string" }
+      - { label: "Link", name: "link", widget: "string" }
+      - { label: "Badge", name: "badge", widget: "string" }

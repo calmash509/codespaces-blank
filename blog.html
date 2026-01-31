@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog & Buying Guides - Shop</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #3b82f6;
+      --secondary: #f59e0b;
+      --accent: #ec4899;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --dark: #1e293b;
+      --darker: #0f172a;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-hover: 0 20px 40px -10px rgba(37, 99, 235, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--light);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* ===== IMPROVED MOBILE-RESPONSIVE HEADER ===== */
+    header {
+      background: white;
+      box-shadow: var(--shadow);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+      z-index: 1001;
+    }
+
+    .logo-icon {
+      background: var(--gradient-primary);
+      padding: 0.4rem;
+      border-radius: 10px;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile Menu Button */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    /* Page Header */
+    .page-header {
+      background: var(--gradient-primary);
+      padding: 8rem 1rem 4rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      margin-top: 70px;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,0 1000,1000 0,1000"/></svg>');
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .page-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .back-link:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateX(-5px);
+    }
+
+    /* Blog Section */
+    .blog-section {
+      padding: 3rem 1rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .blog-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .blog-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .blog-subtitle {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .blog-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .blog-content {
+      padding: 1.5rem;
+    }
+
+    .blog-category {
+      display: inline-block;
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .blog-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .blog-card p {
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    .read-more {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Categories */
+    .categories {
+      background: var(--darker);
+      padding: 3rem 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .category-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .category-card:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .category-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--secondary);
+    }
+
+    .category-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--darker);
+      color: white;
+      padding: 3rem 1rem 2rem;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-column h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+
+    /* ===== MOBILE MENU STYLES ===== */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        transition: left 0.3s ease;
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        z-index: 999;
+        overflow-y: auto;
+      }
+      
+      .nav-links.active {
+        left: 0;
+      }
+      
+      .nav-link {
+        padding: 1rem;
+        width: 100%;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+      }
+
+      .page-header {
+        padding: 6rem 1rem 3rem;
+        margin-top: 60px;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .page-subtitle {
+        font-size: 1rem;
+      }
+      
+      .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .blog-card {
+        margin-bottom: 1rem;
+      }
+      
+      .blog-content {
+        padding: 1.25rem;
+      }
+      
+      .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      
+      .category-card {
+        padding: 1.25rem 0.75rem;
+      }
+      
+      .category-icon {
+        font-size: 1.25rem;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .nav-container {
+        padding: 1rem 2rem;
+      }
+      
+      .logo {
+        font-size: 1.5rem;
+      }
+      
+      .nav-links {
+        gap: 1.5rem;
+      }
+      
+      .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+      }
+      
+      .page-header {
+        padding: 8rem 2rem 4rem;
+      }
+      
+      .page-title {
+        font-size: 3.5rem;
+      }
+      
+      .page-subtitle {
+        font-size: 1.25rem;
+      }
+      
+      .blog-section {
+        padding: 4rem 2rem;
+      }
+      
+      .blog-title {
+        font-size: 2.5rem;
+      }
+      
+      .blog-grid {
+        gap: 2rem;
+      }
+      
+      .categories-grid {
+        gap: 1.5rem;
+      }
+    }
+
+    /* ===== TOUCH-FRIENDLY IMPROVEMENTS ===== */
+    @media (hover: none) {
+      .blog-card:hover {
+        transform: none;
+      }
+      
+      .category-card:hover {
+        transform: none;
+      }
+      
+      .back-link:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-shopping-bag"></i>
+        </div>
+        Shop
+      </a>
+      
+      <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="categories.html" class="nav-link">Categories</a>
+        <a href="electronics.html" class="nav-link">Electronics</a>
+        <a href="home-living.html" class="nav-link">Home & Living</a>
+        <a href="fashion.html" class="nav-link">Fashion</a>
+        <a href="beauty.html" class="nav-link">Beauty & Health</a>
+        <a href="blog.html" class="nav-link active">Blog & Guides</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="page-header-content">
+      <h1 class="page-title">Blog & Buying Guides</h1>
+      <p class="page-subtitle">Expert advice, product reviews, and buying guides to help you make informed decisions</p>
+      <a href="index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+      </a>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="categories">
+    <div class="categories-grid">
+      <a href="#electronics" class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-laptop"></i>
+        </div>
+        <div class="category-name">Electronics</div>
+      </a>
+      <a href="#home" class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-home"></i>
+        </div>
+        <div class="category-name">Home & Living</div>
+      </a>
+      <a href="#fashion" class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-tshirt"></i>
+        </div>
+        <div class="category-name">Fashion</div>
+      </a>
+      <a href="#beauty" class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-spa"></i>
+        </div>
+        <div class="category-name">Beauty</div>
+      </a>
+      <a href="#automotive" class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-car"></i>
+        </div>
+        <div class="category-name">Automotive</div>
+      </a>
+      <a href="#deals" class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-tag"></i>
+        </div>
+        <div class="category-name">Hot Deals</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="blog-section">
+    <div class="blog-header">
+      <h2 class="blog-title">Latest Articles & Guides</h2>
+      <p class="blog-subtitle">Stay informed with our expert buying guides, product reviews, and shopping tips</p>
+    </div>
+    
+    <div class="blog-grid" id="blogList"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>ShopHub</h3>
+        <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Your trusted dropshipping partner for quality products at competitive prices. Global shipping available.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Shop</h3>
+        <ul class="footer-links">
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="home-living.html">Home & Living</a></li>
+          <li><a href="fashion.html">Fashion</a></li>
+          <li><a href="beauty.html">Beauty & Health</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Support</h3>
+        <ul class="footer-links">
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Connect</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+          <li><a href="#"><i class="fab fa-tiktok"></i> TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ShopHub. All rights reserved. Premium Dropshipping Marketplace</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-container')) {
+        navLinks.classList.remove('active');
+      }
+    });
+
+    // Blog data
+    const blogPosts = [
+      {
+        title: "How to Choose the Perfect Laptop for Your Needs in 2025",
+        excerpt: "Complete guide to selecting the right laptop based on your usage, budget, and preferences.",
+        image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop",
+        category: "Electronics",
+        date: "Mar 15, 2025",
+        readTime: "8 min read"
+      },
+      {
+        title: "Top 10 Home Organization Products That Will Transform Your Space",
+        excerpt: "Discover the best organization solutions to declutter and maximize your living space.",
+        image: "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=400&h=300&fit=crop",
+        category: "Home & Living",
+        date: "Mar 12, 2025",
+        readTime: "6 min read"
+      },
+      {
+        title: "Spring Fashion Trends 2025: What's Hot This Season",
+        excerpt: "Stay ahead of the fashion curve with our comprehensive guide to spring trends.",
+        image: "https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&h=300&fit=crop",
+        category: "Fashion",
+        date: "Mar 10, 2025",
+        readTime: "5 min read"
+      },
+      {
+        title: "Skincare Routine for Different Skin Types: Expert Guide",
+        excerpt: "Learn how to build the perfect skincare routine tailored to your specific skin type.",
+        image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=300&fit=crop",
+        category: "Beauty",
+        date: "Mar 8, 2025",
+        readTime: "7 min read"
+      },
+      {
+        title: "Essential Car Maintenance Products Every Driver Should Have",
+        excerpt: "Keep your vehicle in top condition with these must-have automotive products.",
+        image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&h=300&fit=crop",
+        category: "Automotive",
+        date: "Mar 5, 2025",
+        readTime: "4 min read"
+      },
+      {
+        title: "How to Spot Genuine Deals vs. Fake Discounts Online",
+        excerpt: "Learn the secrets to identifying real bargains and avoiding marketing tricks.",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
+        category: "Shopping Tips",
+        date: "Mar 3, 2025",
+        readTime: "5 min read"
+      }
+    ];
+
+    const blogList = document.getElementById('blogList');
+    blogPosts.forEach(post => {
+      const card = document.createElement('div');
+      card.classList.add('blog-card');
+      card.innerHTML = `
+        <img src="${post.image}" alt="${post.title}" class="blog-image">
+        <div class="blog-content">
+          <span class="blog-category">${post.category}</span>
+          <h3>${post.title}</h3>
+          <p>${post.excerpt}</p>
+          <div class="blog-meta">
+            <span>${post.date}</span>
+            <a href="#" class="read-more">
+              Read More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      `;
+      blogList.appendChild(card);
+    });
+  </script>
+</body>
+</html>

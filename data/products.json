@@ -1,0 +1,15 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "category": "electronics",
+      "name": "Wireless Earbuds",
+      "price": "$79.99",
+      "image": "/images/electronics/earbuds.jpg",
+      "rating": "4.5",
+      "source": "Amazon",
+      "link": "https://amazon.com/product",
+      "badge": "Best Seller"
+    }
+  ]
+}

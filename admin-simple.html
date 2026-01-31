@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Add Product - Simple CMS</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #005a87; }
+    </style>
+</head>
+<body>
+    <h1>Add New Product</h1>
+    <form id="productForm">
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <select id="category" required>
+                <option value="">Select Category</option>
+                <option value="electronics">Electronics</option>
+                <option value="fashion">Fashion</option>
+                <option value="sports">Sports</option>
+                <option value="beauty">Beauty</option>
+                <option value="toys">Toys</option>
+                <option value="home-living">Home & Living</option>
+                <option value="pet-supplies">Pet Supplies</option>
+                <option value="automotive">Automotive</option>
+                <option value="deals">Deals</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" id="price" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="image">Image URL:</label>
+            <input type="url" id="image">
+        </div>
+        
+        <div class="form-group">
+            <label for="rating">Rating:</label>
+            <input type="text" id="rating" placeholder="4.5">
+        </div>
+        
+        <div class="form-group">
+            <label for="source">Source:</label>
+            <input type="text" id="source">
+        </div>
+        
+        <div class="form-group">
+            <label for="link">Product Link:</label>
+            <input type="url" id="link">
+        </div>
+        
+        <div class="form-group">
+            <label for="badge">Badge:</label>
+            <input type="text" id="badge" placeholder="Best Seller, Sale, etc.">
+        </div>
+        
+        <button type="submit">Add Product via GitHub</button>
+    </form>
+
+    <script>
+        document.getElementById('productForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                category: document.getElementById('category').value,
+                name: document.getElementById('name').value,
+                price: document.getElementById('price').value,
+                image: document.getElementById('image').value,
+                rating: document.getElementById('rating').value,
+                source: document.getElementById('source').value,
+                link: document.getElementById('link').value,
+                badge: document.getElementById('badge').value
+            };
+            
+            // Redirect to GitHub Issues with pre-filled form
+            const issueTitle = `[Product]: ${formData.name}`;
+            const issueBody = `
+### category
+${formData.category}
+
+### name
+${formData.name}
+
+### price
+${formData.price}
+
+### image
+${formData.image}
+
+### rating
+${formData.rating}
+
+### source
+${formData.source}
+
+### link
+${formData.link}
+
+### badge
+${formData.badge}
+            `.trim();
+            
+            const githubUrl = `https://github.com/YOUR_USERNAME/YOUR_REPO/issues/new?title=${encodeURIComponent(issueTitle)}&body=${encodeURIComponent(issueBody)}&labels=product`;
+            window.open(githubUrl, '_blank');
+        });
+    </script>
+</body>
+</html>

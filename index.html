@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop - Premium Dropshipping Marketplace</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #3b82f6;
+      --secondary: #f59e0b;
+      --accent: #ec4899;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --dark: #1e293b;
+      --darker: #0f172a;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-hover: 0 20px 40px -10px rgba(37, 99, 235, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ===== MOBILE-FIRST HEADER ===== */
+    header {
+      background: white;
+      box-shadow: var(--shadow);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      background: var(--gradient-primary);
+      padding: 0.4rem;
+      border-radius: 10px;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile Menu Button */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: var(--dark);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .icon-btn:hover {
+      color: var(--primary);
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .badge {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background: var(--secondary);
+      color: white;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 50px;
+      min-width: 16px;
+      text-align: center;
+    }
+
+    /* ===== MOBILE-FRIENDLY HERO SECTION ===== */
+    .hero {
+      background: var(--gradient-primary);
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      margin-top: 70px;
+      position: relative;
+      overflow: hidden;
+      padding: 2rem 1rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+    }
+
+    .hero-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+    }
+
+    /* Hide floating cards on mobile */
+    .hero-visual {
+      display: none;
+    }
+
+    /* ===== MOBILE-FRIENDLY PRODUCTS SECTION ===== */
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* FIXED PRODUCT CARD STYLES */
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--secondary);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+      /* Ensure consistent height for product names */
+      min-height: 50px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .stars {
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+
+    .rating-count {
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    .product-source {
+      color: var(--gray);
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .buy-btn {
+      width: 100%;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 0.875rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      margin-top: auto; /* This pushes the button to the bottom */
+    }
+
+    .buy-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+    }
+
+    /* ===== MOBILE-FRIENDLY CATEGORIES SECTION ===== */
+    .categories-section {
+      background: var(--darker);
+      color: white;
+      padding: 3rem 1rem;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .category-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .category-card:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .category-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+
+    .category-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .category-description {
+      opacity: 0.8;
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    /* ===== MOBILE-FRIENDLY FEATURES ===== */
+    .features {
+      background: var(--light);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--gradient-primary);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.75rem;
+      color: white;
+    }
+
+    .feature-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--dark);
+    }
+
+    .feature-description {
+      color: var(--gray);
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    /* ===== MOBILE-FRIENDLY NEWSLETTER ===== */
+    .newsletter {
+      background: var(--gradient-primary);
+      padding: 3rem 1rem;
+      text-align: center;
+      color: white;
+    }
+
+    .newsletter-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .newsletter h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter p {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      max-width: 400px;
+      margin: 1.5rem auto 0;
+      flex-direction: column;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .newsletter-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .newsletter-btn:hover {
+      background: #eab308;
+      transform: translateY(-2px);
+    }
+
+    /* ===== MOBILE-FRIENDLY FOOTER ===== */
+    footer {
+      background: var(--darker);
+      color: white;
+      padding: 3rem 1rem 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-column h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+
+    /* ===== MEDIA QUERIES FOR LARGER SCREENS ===== */
+    @media (min-width: 768px) {
+      .nav-container {
+        padding: 1rem 2rem;
+      }
+      
+      .logo {
+        font-size: 1.5rem;
+      }
+      
+      .nav-links {
+        gap: 1.5rem;
+      }
+      
+      .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+      }
+      
+      .hero {
+        min-height: 80vh;
+        padding: 0;
+      }
+      
+      .hero-content {
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+        padding: 4rem 2rem;
+      }
+      
+      .hero-text h1 {
+        font-size: 3.5rem;
+      }
+      
+      .hero-text p {
+        font-size: 1.25rem;
+      }
+      
+      .cta-buttons {
+        justify-content: flex-start;
+      }
+      
+      .hero-visual {
+        display: block;
+        position: relative;
+      }
+      
+      .floating-card {
+        position: absolute;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 16px;
+        box-shadow: var(--shadow-lg);
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      .floating-card:nth-child(1) {
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+      
+      .floating-card:nth-child(2) {
+        top: 50%;
+        right: 7%;
+        animation-delay: 2s;
+      }
+      
+      .floating-card:nth-child(3) {
+        bottom: 20%;
+        left: 40%;
+        animation-delay: 4s;
+      }
+      
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+      }
+      
+      .section {
+        padding: 5rem 2rem;
+      }
+      
+      .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1.125rem;
+      }
+      
+      .products-grid {
+        gap: 2rem;
+      }
+      
+      .newsletter-form {
+        flex-direction: row;
+      }
+      
+      .footer-content {
+        gap: 3rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .nav-links {
+        gap: 2rem;
+      }
+      
+      .hero-content {
+        gap: 4rem;
+      }
+    }
+
+    /* ===== MOBILE MENU TOGGLE ===== */
+    @media (max-width: 767px) {
+      .menu-toggle {
+        display: flex;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: white;
+        flex-direction: column;
+        gap: 0;
+        transition: left 0.3s ease;
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+      }
+      
+      .nav-links.active {
+        left: 0;
+      }
+      
+      .nav-link {
+        padding: 1rem;
+        width: 100%;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+      }
+      
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-text p {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.9rem;
+      }
+      
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== TOUCH-FRIENDLY IMPROVEMENTS ===== */
+    @media (hover: none) {
+      .product-card:hover {
+        transform: none;
+      }
+      
+      .buy-btn:hover {
+        transform: none;
+      }
+      
+      .category-card:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-shopping-bag"></i>
+        </div>
+        Shop
+      </a>
+      
+      <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="categories.html" class="nav-link">Categories</a>
+        <a href="electronics.html" class="nav-link">Electronics</a>
+        <a href="home-living.html" class="nav-link">Home & Living</a>
+        <a href="fashion.html" class="nav-link">Fashion</a>
+        <a href="deals.html" class="nav-link">Hot Deals</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <button class="icon-btn">
+          <i class="fas fa-search"></i>
+        </button>
+        <button class="icon-btn">
+          <i class="fas fa-heart"></i>
+          <span class="badge">3</span>
+        </button>
+        <button class="icon-btn">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="badge">5</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Discover Amazing Products at Unbeatable Prices</h1>
+        <p>Shop thousands of premium products with direct shipping from trusted suppliers. Quality guaranteed with competitive prices.</p>
+        <div class="cta-buttons">
+          <a href="categories.html" class="btn btn-primary">
+            <i class="fas fa-shopping-bag"></i>
+            Shop Now
+          </a>
+          <a href="deals.html" class="btn btn-secondary">
+            <i class="fas fa-bolt"></i>
+            Hot Deals
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-card">
+          <i class="fas fa-laptop" style="color: #2563eb; font-size: 2rem; margin-bottom: 1rem;"></i>
+          <h4>Electronics</h4>
+          <p style="color: var(--gray); font-size: 0.875rem;">Latest gadgets</p>
+        </div>
+        <div class="floating-card">
+          <i class="fas fa-home" style="color: #2563eb; font-size: 2rem; margin-bottom: 1rem;"></i>
+          <h4>Home & Living</h4>
+          <p style="color: var(--gray); font-size: 0.875rem;">Home essentials</p>
+        </div>
+        <div class="floating-card">
+          <i class="fas fa-tshirt" style="color: #2563eb; font-size: 2rem; margin-bottom: 1rem;"></i>
+          <h4>Fashion</h4>
+          <p style="color: var(--gray); font-size: 0.875rem;">Style trends</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Trending Products</h2>
+      <p class="section-subtitle">Discover our most popular items loved by customers worldwide</p>
+    </div>
+    <div class="products-grid" id="product-grid"></div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories-section">
+    <div class="section-header">
+      <h2 class="section-title" style="color: white;">Shop by Category</h2>
+      <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Explore our wide range of product categories</p>
+    </div>
+    <div class="categories-grid">
+      <a href="electronics.html" class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-laptop"></i>
+        </div>
+        <h3 class="category-title">Electronics</h3>
+        <p class="category-description">Smartphones, laptops, gadgets and latest tech innovations</p>
+      </a>
+      <a href="home-living.html" class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-home"></i>
+        </div>
+        <h3 class="category-title">Home & Living</h3>
+        <p class="category-description">Furniture, decor, kitchenware and home improvement</p>
+      </a>
+      <a href="fashion.html" class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-tshirt"></i>
+        </div>
+        <h3 class="category-title">Fashion</h3>
+        <p class="category-description">Clothing, accessories, shoes and style essentials</p>
+      </a>
+      <a href="beauty.html" class="category-card">
+        <div class="category-icon">
+          <i class="fas fa-spa"></i>
+        </div>
+        <h3 class="category-title">Beauty & Health</h3>
+        <p class="category-description">Skincare, makeup, wellness and personal care</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section features">
+    <div class="section-header">
+      <h2 class="section-title">Why Shop With Us?</h2>
+      <p class="section-subtitle">We're committed to providing the best shopping experience</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-shipping-fast"></i>
+        </div>
+        <h3 class="feature-title">Free Shipping</h3>
+        <p class="feature-description">Free delivery on orders over $50 with worldwide shipping options</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="feature-title">Secure Payment</h3>
+        <p class="feature-description">Your payments are protected with industry-leading security</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-tags"></i>
+        </div>
+        <h3 class="feature-title">Best Prices</h3>
+        <p class="feature-description">Competitive prices with regular discounts and special offers</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h3 class="feature-title">24/7 Support</h3>
+        <p class="feature-description">Round-the-clock customer support for all your queries</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="newsletter-content">
+      <h2>Stay Updated</h2>
+      <p>Get exclusive deals and new product alerts delivered to your inbox</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>ShopHub</h3>
+        <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.6;">Your trusted dropshipping partner for quality products at competitive prices. Global shipping available.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Shop</h3>
+        <ul class="footer-links">
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="home-living.html">Home & Living</a></li>
+          <li><a href="fashion.html">Fashion</a></li>
+          <li><a href="beauty.html">Beauty & Health</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Support</h3>
+        <ul class="footer-links">
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Connect</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+          <li><a href="#"><i class="fab fa-tiktok"></i> TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ShopHub. All rights reserved. Premium Dropshipping Marketplace</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-container')) {
+        navLinks.classList.remove('active');
+      }
+    });
+
+    // Products data
+    const products = [
+        {
+        name: "24K Gold Under Eye Patches - 60 Pack for Puffy Eyes, Dark Circles, Bags & Wrinkles with Collagen & Hyaluronic Acid",
+        price: "$7.50",
+        image: "https://m.media-amazon.com/images/I/71w25DflEoL._SX679_.jpg",
+        rating: 4.1,
+        source: "Amazon",
+        link: "https://amzn.to/4o5KYYd",
+        badge: "Popular"
+      },
+      {
+        name: "Hanes EcoSmart Hoodie, Midweight Fleece, Pullover Hooded Sweatshirt for Men",
+        price: "$8.73",
+        image: "https://m.media-amazon.com/images/I/612qfszVgIL._AC_SX679_.jpg",
+        rating: 4.6,
+        source: "Amazon",
+        link: "https://amzn.to/3WnWvWQ",
+        badge: "Bestseller"
+      },
+      {
+        name: "COLOR WOW Dream Coat Supernatural Spray – Keep Your Hair Frizz-Free and Shiny No Matter the Weather with Award-Winning Anti-Humidity Treatment",
+        price: "$28.00",
+        image: "https://m.media-amazon.com/images/I/81RwT-IfkhL._SX522_.jpg",
+        rating: 4.3,
+        source: "Amazon",
+        link: "https://amzn.to/3Jd1dUp",
+        badge: "Sale"
+      },
+      {
+        name: "e.l.f. SKIN Holy Hydration! Hydrated Ever After Skincare Mini Kit, Cleanser, Makeup Remover, Moisturizer & Eye Cream For Hydrating Skin, Airplane-Friendly Sizes",
+        price: "$21.00",
+        image: "https://m.media-amazon.com/images/I/71sWWbYc1rL._SX679_.jpg",
+        rating: 4.6,
+        source: "Amazon",
+        link: "https://amzn.to/4ofetaq",
+        badge: "New"
+      }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('product-grid');
+      products.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+          <img src="${p.image}" alt="${p.name}" class="product-image">
+          <div class="product-info">
+            <h3 class="product-name">${p.name}</h3>
+            <div class="product-price">${p.price}</div>
+            <div class="product-rating">
+              <div class="stars">
+                ${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5-Math.floor(p.rating))}
+              </div>
+              <span class="rating-count">${p.rating}</span>
+            </div>
+            <div class="product-source">From ${p.source}</div>
+            <button class="buy-btn" onclick="window.open('${p.link}', '_blank')">
+              <i class="fas fa-external-link-alt"></i>
+              Buy on ${p.source}
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>
+
+
